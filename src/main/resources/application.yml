@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: [dev, dao, log]
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 2000MB
+  jmx:
+    default-domain: GKOS-serve
+#  mvc:
+#    format:
+#      date: yyyy-MM-dd HH:mm:ss
+
+#server:
+#  tomcat:
+#    # -1 表示不限制请求大小
+#    # 单位是字节 byte
+#    max-http-form-post-size: -1
+
+

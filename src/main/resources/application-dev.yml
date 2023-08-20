@@ -1,0 +1,6 @@
+#端口和路径
+server:
+  port: 3001
+#  port: 80
+  servlet:
+    context-path: /api
