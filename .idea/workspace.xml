@@ -5,45 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57238ca3-7283-49a3-90fb-3c7372c0f994" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/GKOSApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/MemberLoginToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/PassToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/interceptor/AuthenticationInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/CloseHttpUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/Cs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/HttpClientUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/JSONToUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/JsonVos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/QCodeResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/Streams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/BaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Admit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Major.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Province.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/University.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/json/DataJsonVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/json/JsonVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/json/ListJsonVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/json/ListPageJsonVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/list/ListPageVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dao.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-log.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/LoginUserOrAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/resolver/UserDtoResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/MD5Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/AdminMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/AdminMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/LoginVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/LoginReqVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/RegisterReqVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/interceptor/AuthenticationInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/interceptor/AuthenticationInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/CloseHttpUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/Cs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/HttpClientUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/JSONToUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/util/QCodeResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CsServiceImpl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +52,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -96,14 +91,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ToolWindow运行.ShowToolbar&quot;: &quot;false&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Users/skn/Idea/item/GKOS-serve/src/main/java/com/linxi/gkos/common&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Users/skn/Idea/item/GKOS-serve/src/main/java/com/linxi/gkos/common/util&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;7c7d2bcc4fc32fbd22afcf7ec855aa14&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -117,34 +112,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos\common\util" />
+      <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos\mapper" />
       <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos\common" />
       <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos\pojo\vo" />
-      <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos\common\util" />
       <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\java\com\linxi\gkos" />
-      <recent name="E:\Users\skn\Idea\item\GKOS-serve\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linxi.gkos.pojo.dto" />
+      <recent name="com.linxi.gkos.pojo.vo.req" />
+      <recent name="com.linxi.gkos.pojo.vo" />
       <recent name="com.linxi.gkos.common.interceptor" />
       <recent name="com.linxi.gkos.pojo.vo.list" />
-      <recent name="com.linxi.gkos.common.util" />
-      <recent name="com.linxi.gkos.pojo.result" />
-      <recent name="com.linxi.gkos.conteoller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GKOSApplication">
-    <configuration name="Cs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.linxi.gkos.common.util.Cs" />
-      <module name="GKOS-serve" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.linxi.gkos.common.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="GKOSApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="GKOS-serve" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.linxi.gkos.GKOSApplication" />
@@ -152,11 +134,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="应用程序.Cs" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -185,7 +162,13 @@
       <workItem from="1692242944364" duration="3029000" />
       <workItem from="1692248799436" duration="626000" />
       <workItem from="1692435790888" duration="16009000" />
-      <workItem from="1692516780381" duration="11791000" />
+      <workItem from="1692516780381" duration="16796000" />
+      <workItem from="1692619494388" duration="628000" />
+      <workItem from="1692622613363" duration="560000" />
+      <workItem from="1692623411067" duration="448000" />
+      <workItem from="1692623871509" duration="675000" />
+      <workItem from="1692719098755" duration="1290000" />
+      <workItem from="1692777482261" duration="10235000" />
     </task>
     <servers />
   </component>

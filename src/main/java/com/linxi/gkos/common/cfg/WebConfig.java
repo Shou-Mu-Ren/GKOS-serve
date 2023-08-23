@@ -2,16 +2,25 @@ package com.linxi.gkos.common.cfg;
 
 
 import com.linxi.gkos.common.interceptor.AuthenticationInterceptor;
+import com.linxi.gkos.common.resolver.UserDtoResolver;
+import com.linxi.gkos.pojo.dto.UserDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Resource
+    private UserDtoResolver userDtoResolver;
 
 //    跨域
     @Override
@@ -42,6 +51,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean//AuthenticationInterceptor自定义的认证拦截器，自动配置并注入spring管理
     public AuthenticationInterceptor authenticationInterceptor(){
         return new AuthenticationInterceptor();
+    }
+
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(userDtoResolver);
     }
 
 }

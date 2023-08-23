@@ -771,8 +771,8 @@
       <CollationName>utf8_general_ci</CollationName>
     </table>
     <column id="223" parent="216" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DataType>int(11) unsigned|0s</DataType>
+      <AutoIncrement>97713</AutoIncrement>
+      <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
@@ -782,12 +782,11 @@
       <Position>2</Position>
     </column>
     <column id="225" parent="216" name="grand">
-      <DataType>float unsigned|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>int(10) unsigned|0s</DataType>
       <Position>3</Position>
     </column>
     <column id="226" parent="216" name="rank">
-      <DataType>int(11) unsigned|0s</DataType>
+      <DataType>int(10) unsigned|0s</DataType>
       <Position>4</Position>
     </column>
     <column id="227" parent="216" name="subject">
@@ -795,7 +794,7 @@
       <Position>5</Position>
     </column>
     <column id="228" parent="216" name="plan">
-      <DataType>int(11) unsigned|0s</DataType>
+      <DataType>int(10) unsigned|0s</DataType>
       <Position>6</Position>
     </column>
     <column id="229" parent="216" name="year">
@@ -823,7 +822,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="234" parent="217" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>332</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -858,7 +857,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="241" parent="218" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>52904</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -878,214 +877,222 @@
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="245" parent="218" name="major_university_code">
+    <column id="245" parent="218" name="level">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="246" parent="218" name="major_university_code">
       <ColNames>university_code</ColNames>
       <RefColNames>code</RefColNames>
       <RefTableName>university</RefTableName>
     </foreign-key>
-    <index id="246" parent="218" name="PRIMARY">
+    <index id="247" parent="218" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="247" parent="218" name="major_university_code">
+    <index id="248" parent="218" name="major_university_code">
       <ColNames>university_code</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="248" parent="218" name="PRIMARY">
+    <key id="249" parent="218" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="249" parent="219" name="id">
+    <column id="250" parent="219" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="250" parent="219" name="to_id">
+    <column id="251" parent="219" name="to_id">
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="251" parent="219" name="from_id">
+    <column id="252" parent="219" name="from_id">
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="252" parent="219" name="content">
+    <column id="253" parent="219" name="content">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="253" parent="219" name="create_time">
+    <column id="254" parent="219" name="create_time">
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="254" parent="219" name="message_to_user_id">
+    <foreign-key id="255" parent="219" name="message_to_user_id">
       <ColNames>to_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="255" parent="219" name="message_from_user_id">
+    <foreign-key id="256" parent="219" name="message_from_user_id">
       <ColNames>from_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="256" parent="219" name="PRIMARY">
+    <index id="257" parent="219" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="257" parent="219" name="message_to_user_id">
+    <index id="258" parent="219" name="message_to_user_id">
       <ColNames>to_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="258" parent="219" name="message_from_user_id">
+    <index id="259" parent="219" name="message_from_user_id">
       <ColNames>from_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="259" parent="219" name="PRIMARY">
+    <key id="260" parent="219" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="260" parent="220" name="id">
+    <column id="261" parent="220" name="id">
       <AutoIncrement>34</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="261" parent="220" name="name">
+    <column id="262" parent="220" name="name">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="262" parent="220" name="PRIMARY">
+    <index id="263" parent="220" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="263" parent="220" name="PRIMARY">
+    <key id="264" parent="220" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="264" parent="221" name="code">
+    <column id="265" parent="221" name="code">
       <DataType>varchar(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="265" parent="221" name="name">
+    <column id="266" parent="221" name="name">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="266" parent="221" name="city_id">
+    <column id="267" parent="221" name="city_id">
       <DataType>int(10) unsigned|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="267" parent="221" name="type">
+    <column id="268" parent="221" name="type">
       <DataType>varchar(20)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="268" parent="221" name="nature">
+    <column id="269" parent="221" name="nature">
       <DataType>varchar(20)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="269" parent="221" name="f11">
+    <column id="270" parent="221" name="f11">
       <DataType>int(10) unsigned|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="270" parent="221" name="f211">
+    <column id="271" parent="221" name="f211">
       <DataType>int(10) unsigned|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="271" parent="221" name="f985">
+    <column id="272" parent="221" name="f985">
       <DataType>int(10) unsigned|0s</DataType>
       <Position>8</Position>
     </column>
-    <foreign-key id="272" parent="221" name="university_city_id">
+    <foreign-key id="273" parent="221" name="university_city_id">
       <ColNames>city_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>city</RefTableName>
     </foreign-key>
-    <index id="273" parent="221" name="PRIMARY">
+    <index id="274" parent="221" name="PRIMARY">
       <ColNames>code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="274" parent="221" name="university_city_id">
+    <index id="275" parent="221" name="university_city_id">
       <ColNames>city_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="275" parent="221" name="PRIMARY">
+    <key id="276" parent="221" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="276" parent="222" name="id">
+    <column id="277" parent="222" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="277" parent="222" name="name">
+    <column id="278" parent="222" name="name">
       <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="278" parent="222" name="password">
-      <DataType>varchar(16)|0s</DataType>
+    <column id="279" parent="222" name="phone">
+      <DataType>varchar(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="279" parent="222" name="subject">
-      <DataType>varchar(20)|0s</DataType>
+    <column id="280" parent="222" name="password">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="280" parent="222" name="grand">
-      <DataType>int(10)|0s</DataType>
+    <column id="281" parent="222" name="subject">
+      <DataType>varchar(20)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="281" parent="222" name="rank">
-      <DataType>int(10) unsigned|0s</DataType>
+    <column id="282" parent="222" name="grand">
+      <DataType>int(10)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="282" parent="222" name="vip">
+    <column id="283" parent="222" name="rank">
       <DataType>int(10) unsigned|0s</DataType>
-      <DefaultExpression>0</DefaultExpression>
-      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="283" parent="222" name="result_id">
-      <DataType>int(10) unsigned|0s</DataType>
-      <Position>8</Position>
-    </column>
-    <column id="284" parent="222" name="role">
+    <column id="284" parent="222" name="vip">
       <DataType>int(10) unsigned|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="285" parent="222" name="result_id">
+      <DataType>int(10) unsigned|0s</DataType>
       <Position>9</Position>
     </column>
-    <foreign-key id="285" parent="222" name="user_result_id">
+    <column id="286" parent="222" name="role">
+      <DataType>int(10) unsigned|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <foreign-key id="287" parent="222" name="user_result_id">
       <ColNames>result_id</ColNames>
       <OnDelete>set-null</OnDelete>
       <OnUpdate>set-null</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="286" parent="222" name="PRIMARY">
+    <index id="288" parent="222" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="287" parent="222" name="user_result_id">
+    <index id="289" parent="222" name="user_result_id">
       <ColNames>result_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="288" parent="222" name="PRIMARY">
+    <key id="290" parent="222" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
