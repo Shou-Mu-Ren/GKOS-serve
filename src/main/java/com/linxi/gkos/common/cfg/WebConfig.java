@@ -2,8 +2,9 @@ package com.linxi.gkos.common.cfg;
 
 
 import com.linxi.gkos.common.interceptor.AuthenticationInterceptor;
+import com.linxi.gkos.common.resolver.ResultDtoResolver;
 import com.linxi.gkos.common.resolver.UserDtoResolver;
-import com.linxi.gkos.pojo.dto.UserDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -21,6 +22,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Resource
     private UserDtoResolver userDtoResolver;
+
+    @Autowired
+    private ResultDtoResolver resultDtoResolver;
 
 //    跨域
     @Override
@@ -56,6 +60,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(userDtoResolver);
+        resolvers.add(resultDtoResolver);
     }
 
 }

@@ -8,12 +8,14 @@ public class User {
     String name;
     String phone;
     String password;
+    String place;
+    String school;
     String subject;
     Integer grand;
     Integer rank;
+    String state;
     //0不是 1是
     Integer vip;
     Integer resultId;
-    //0用户 1导师 2admin
-    Integer role;
+    String year;
 }

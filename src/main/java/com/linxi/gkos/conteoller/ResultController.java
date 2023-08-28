@@ -5,27 +5,25 @@ import com.linxi.gkos.common.annotation.PassToken;
 import com.linxi.gkos.common.exception.CommonException;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.MD5Util;
-import com.linxi.gkos.pojo.po.User;
+import com.linxi.gkos.pojo.po.Result;
 import com.linxi.gkos.pojo.vo.LoginVo;
 import com.linxi.gkos.pojo.vo.json.DataJsonVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
 import com.linxi.gkos.pojo.vo.req.LoginReqVo;
-import com.linxi.gkos.service.UserService;
+import com.linxi.gkos.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
-public class UserController extends BaseController<User>{
-
+@RequestMapping("/result")
+public class ResultController extends BaseController<Result>{
     @Autowired
-    private UserService service;
+    private ResultService service;
 
     @Override
-    protected IService<User> getService() {
+    protected IService<Result> getService() {
         return service;
     }
-
 
     @PassToken
     @PostMapping("/sendCode")
@@ -38,14 +36,13 @@ public class UserController extends BaseController<User>{
     @PostMapping("/loginByCode")
     @ResponseBody
     public DataJsonVo<LoginVo> loginByCode(@RequestBody LoginReqVo loginReqVo) {
-        return JsonVos.ok(service.loginByCode(loginReqVo.getPhone(), loginReqVo.getCode()));
+        return JsonVos.ok(service.loginByCode(loginReqVo.getPhone(), loginReqVo.getPassword()));
     }
 
     @PassToken
     @PostMapping("/loginByPassword")
     @ResponseBody
     public DataJsonVo<LoginVo> loginByPassword(@RequestBody LoginReqVo loginReqVo) {
-
         try {
             loginReqVo.setPassword(MD5Util.encryMD5(loginReqVo.getPassword().getBytes()));
         } catch (Exception e) {
@@ -53,6 +50,4 @@ public class UserController extends BaseController<User>{
         }
         return JsonVos.ok(service.loginByPassword(loginReqVo.getPhone(), loginReqVo.getPassword()));
     }
-
-
 }

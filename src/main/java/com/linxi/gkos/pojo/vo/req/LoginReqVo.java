@@ -6,4 +6,5 @@ import lombok.Data;
 public class LoginReqVo {
     private String phone;
     private String password;
+    private String code;
 }

@@ -6,20 +6,24 @@
         <result property="name" column="name" jdbcType="VARCHAR" />
         <result property="phone" column="phone" jdbcType="VARCHAR" />
         <result property="password" column="password" jdbcType="VARCHAR" />
+        <result property="place" column="place" jdbcType="VARCHAR" />
+        <result property="school" column="school" jdbcType="VARCHAR" />
         <result property="subject" column="subject" jdbcType="VARCHAR" />
         <result property="grand" column="grand" jdbcType="INTEGER" />
         <result property="rank" column="rank" jdbcType="INTEGER" />
+        <result property="state" column="state" jdbcType="VARCHAR" />
         <result property="vip" column="vip" jdbcType="INTEGER" />
         <result property="resultId" column="result_id" jdbcType="INTEGER" />
-        <result property="role" column="role" jdbcType="INTEGER" />
+        <result property="year" column="year" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="findUserByPhone" resultMap="UserDto" parameterType="java.lang.String">
         SELECT * FROM user WHERE phone=#{phone,jdbcType=VARCHAR}
     </select>
 
-    <insert id="insertUser" parameterType="com.linxi.gkos.pojo.po.User">
-        INSERT INTO user (phone, password, vip, role)
-        VALUES (#{phone,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},0,0)
+    <insert id="insertUser" parameterType="java.lang.String">
+        INSERT INTO user (phone, vip)
+        VALUES (#{phone,jdbcType=VARCHAR},0)
     </insert>
+
 </mapper>

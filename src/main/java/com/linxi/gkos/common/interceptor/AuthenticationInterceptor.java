@@ -7,8 +7,11 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.linxi.gkos.common.annotation.MemberLoginToken;
 import com.linxi.gkos.common.annotation.PassToken;
+import com.linxi.gkos.mapper.ResultMapper;
 import com.linxi.gkos.mapper.UserMapper;
+import com.linxi.gkos.pojo.dto.ResultDto;
 import com.linxi.gkos.pojo.dto.UserDto;
+import com.linxi.gkos.pojo.po.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -26,7 +29,10 @@ import static com.linxi.gkos.pojo.result.CodeMsg.*;
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
-    private UserMapper mapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private ResultMapper resultMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -74,23 +80,33 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                     return false;
                 }
 
-                UserDto userDto = mapper.findUserByPhone(phone);
-                if(userDto == null){
-                    response.setContentType("application/json;charset=UTF-8");
-                    response.getWriter().println(TOKEN_FORMAT_ERROR);
-                    return false;
+                UserDto userDto = userMapper.findUserByPhone(phone);
+                ResultDto resultDto = resultMapper.findResultByPhone(phone);
+                if(userDto != null){
+                    //验证token    verifier:校验机    Algorithm：算法
+                    JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userDto.getPassword())).build();
+                    try {
+                        jwtVerifier.verify(token);
+                    } catch (JWTVerificationException e) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        response.getWriter().println(TOKEN_WRONG_PASSWORD);
+                        return false;
+                    }
+                    return true;
                 }
 
-                //验证token    verifier:校验机    Algorithm：算法
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userDto.getPassword())).build();
-                try {
-                    jwtVerifier.verify(token);
-                } catch (JWTVerificationException e) {
-                    response.setContentType("application/json;charset=UTF-8");
-                    response.getWriter().println(TOKEN_WRONG_PASSWORD);
-                    return false;
+                if(resultDto != null){
+                    //验证token    verifier:校验机    Algorithm：算法
+                    JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(resultDto.getPassword())).build();
+                    try {
+                        jwtVerifier.verify(token);
+                    } catch (JWTVerificationException e) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        response.getWriter().println(TOKEN_WRONG_PASSWORD);
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
             }
         }
         return false;

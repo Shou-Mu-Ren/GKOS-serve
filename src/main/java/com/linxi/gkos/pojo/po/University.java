@@ -12,4 +12,6 @@ public class University {
     Integer f11;
     Integer f211;
     Integer f985;
+    String level;
+    String img;
 }

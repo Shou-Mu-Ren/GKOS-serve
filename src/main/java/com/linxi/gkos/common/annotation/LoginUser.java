@@ -5,5 +5,5 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface LoginUserOrAdmin {
+public @interface LoginUser {
 }

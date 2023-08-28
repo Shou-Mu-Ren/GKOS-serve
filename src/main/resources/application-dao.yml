@@ -1,4 +1,5 @@
 spring:
+  # mysql配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,6 +10,19 @@ spring:
       initial-size: 5
       max-active: 10
       use-ping-method: false
+  # redis配置
+  redis:
+    host: localhost
+    port: 6379
+    # 操作0号数据库，默认有16个数据库
+    database: 0
+    jedis:
+      pool:
+        max-active: 8 # 最大连接数
+        max-wait: 1ms # 连接池最大阻塞等待时间
+        max-idle: 4   # 连接池中的最大空闲连接
+        min-idle: 0   # 连接池中的最小空闲连接
 
 mybatis-plus:
   type-aliases-package: com.linxi.gkos.pojo.po
+

@@ -1,10 +1,10 @@
 package com.linxi.gkos.common.resolver;
 
 import com.auth0.jwt.JWT;
-import com.linxi.gkos.common.annotation.LoginUser;
+import com.linxi.gkos.common.annotation.LoginResult;
 import com.linxi.gkos.common.util.JsonVos;
-import com.linxi.gkos.mapper.UserMapper;
-import com.linxi.gkos.pojo.dto.UserDto;
+import com.linxi.gkos.mapper.ResultMapper;
+import com.linxi.gkos.pojo.dto.ResultDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -16,16 +16,16 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.linxi.gkos.pojo.result.CodeMsg.TOKEN_TO_DTO_WRONG;
-@Service("userDtoResolver")
-public class UserDtoResolver implements HandlerMethodArgumentResolver {
 
+@Service("resultDtoResolver")
+public class ResultDtoResolver implements HandlerMethodArgumentResolver {
     @Autowired
-    private UserMapper mapper;
+    private ResultMapper mapper;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.hasParameterAnnotation(LoginUser.class)
-                && methodParameter.getParameterType().isAssignableFrom(UserDto.class);
+        return methodParameter.hasParameterAnnotation(LoginResult.class)
+                && methodParameter.getParameterType().isAssignableFrom(ResultDto.class);
     }
 
     @Override
@@ -41,11 +41,11 @@ public class UserDtoResolver implements HandlerMethodArgumentResolver {
         token = token.replace("Bearer ","");
         // 获取鉴权信息对应的登录用户dto
         String phone  = JWT.decode(token).getAudience().get(0);
-        UserDto userDto = mapper.findUserByPhone(phone);
-        if (userDto == null){
+        ResultDto resultDto = mapper.findResultByPhone(phone);
+        if (resultDto == null){
             JsonVos.raise(TOKEN_TO_DTO_WRONG);
         }
         // 返回
-        return userDto;
+        return resultDto;
     }
 }
