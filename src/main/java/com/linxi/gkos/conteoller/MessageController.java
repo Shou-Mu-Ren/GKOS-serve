@@ -1,7 +1,8 @@
 package com.linxi.gkos.conteoller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linxi.gkos.common.annotation.MemberLoginToken;
+import com.linxi.gkos.common.annotation.ResultLoginToken;
+import com.linxi.gkos.common.annotation.UserLoginToken;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.pojo.dto.MessageDto;
 import com.linxi.gkos.pojo.po.Message;
@@ -24,7 +25,7 @@ public class MessageController extends BaseController<Message> {
         return service;
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/fromUser")
     @ResponseBody
     public JsonVo fromUser(@RequestBody MessageReqVo messageReqVo){
@@ -36,7 +37,7 @@ public class MessageController extends BaseController<Message> {
         return service.fromUser(message);
     }
 
-    @MemberLoginToken
+    @ResultLoginToken
     @PostMapping("/fromResult")
     @ResponseBody
     public JsonVo fromResult(@RequestBody MessageReqVo messageReqVo){
@@ -48,7 +49,7 @@ public class MessageController extends BaseController<Message> {
         return service.fromResult(message);
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/userList")
     @ResponseBody
     public ListJsonVo<MessageDto> userList(@RequestBody MessageReqVo messageReqVo){
@@ -58,7 +59,7 @@ public class MessageController extends BaseController<Message> {
         return JsonVos.ok(service.userList(message));
     }
 
-    @MemberLoginToken
+    @ResultLoginToken
     @PostMapping("/resultList")
     @ResponseBody
     public ListJsonVo<MessageDto> resultList(@RequestBody MessageReqVo messageReqVo){
@@ -67,5 +68,4 @@ public class MessageController extends BaseController<Message> {
         message.setToId("u_"+messageReqVo.getToId());
         return JsonVos.ok(service.resultList(message));
     }
-
 }

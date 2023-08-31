@@ -3,6 +3,7 @@ package com.linxi.gkos.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.linxi.gkos.mapper.MajorMapper;
 import com.linxi.gkos.mapper.UserMapper;
+import com.linxi.gkos.pojo.dto.MajorDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.po.Major;
 import com.linxi.gkos.pojo.vo.req.MajorReqVo;
@@ -27,18 +28,29 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
     @Autowired
     private RedisTemplate redisTemplate;
     @Override
-    public List<UniversityDto> heat() {
+    public List<UniversityDto> heat(String phone) {
         List<Integer> ids = mapper.findHeatId();
         List<UniversityDto> universityDtos = new ArrayList<>();
         for(int i = 0; i < 9; i++ ){
             universityDtos.add(mapper.findHeatMajorById(ids.get(i)));
         }
+        for(UniversityDto universityDto : universityDtos){
+            for (MajorDto majorDto: universityDto.getMajors()){
+                majorDto.setIs(redisTemplate, phone);
+            }
+        }
         return universityDtos;
     }
 
     @Override
-    public List<UniversityDto> list(MajorReqVo majorReqVo) {
-        return mapper.list(majorReqVo);
+    public List<UniversityDto> list(MajorReqVo majorReqVo, String phone) {
+        List<UniversityDto> universityDtos = mapper.list(majorReqVo);
+        for(UniversityDto universityDto : universityDtos){
+            for (MajorDto majorDto: universityDto.getMajors()){
+                majorDto.setIs(redisTemplate, phone);
+            }
+        }
+        return universityDtos;
     }
 
     @Override
@@ -48,6 +60,12 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
         for (Object o : ids){
             universityDtos.add(mapper.findHeatMajorById(Integer.parseInt(o.toString())));
         }
+        for(UniversityDto universityDto : universityDtos){
+            for (MajorDto majorDto: universityDto.getMajors()){
+                majorDto.setIs(redisTemplate, phone);
+            }
+        }
+
         return universityDtos;
     }
 
@@ -57,6 +75,11 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
         List<UniversityDto> universityDtos = new ArrayList<>();
         for (Object o : ids){
             universityDtos.add(mapper.findHeatMajorById(Integer.parseInt(o.toString())));
+        }
+        for(UniversityDto universityDto : universityDtos){
+            for (MajorDto majorDto: universityDto.getMajors()){
+                majorDto.setIs(redisTemplate, phone);
+            }
         }
         return universityDtos;
     }

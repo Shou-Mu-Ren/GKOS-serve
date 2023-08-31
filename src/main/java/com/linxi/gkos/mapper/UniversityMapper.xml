@@ -152,7 +152,6 @@
         FROM university u
                  LEFT JOIN city c ON u.city_id = c.id
                  LEFT JOIN province p ON c.province_id = p.id
-                 LEFT JOIN major m ON u.code = m.university_code
         WHERE
         <if test="level != null">
             u.level = #{level,jdbcType=VARCHAR}

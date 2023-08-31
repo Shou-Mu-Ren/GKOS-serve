@@ -1,10 +1,7 @@
 package com.linxi.gkos.conteoller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linxi.gkos.common.annotation.LoginResult;
-import com.linxi.gkos.common.annotation.LoginUser;
-import com.linxi.gkos.common.annotation.MemberLoginToken;
-import com.linxi.gkos.common.annotation.PassToken;
+import com.linxi.gkos.common.annotation.*;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.MD5Util;
 import com.linxi.gkos.pojo.dto.ResultDto;
@@ -87,7 +84,7 @@ public class UserController extends BaseController<User>{
     }
 
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/analyse")
     @ResponseBody
     public JsonVo analyse(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
@@ -100,7 +97,7 @@ public class UserController extends BaseController<User>{
         return service.analyse(user);
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/info")
     @ResponseBody
     public JsonVo info(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
@@ -122,7 +119,7 @@ public class UserController extends BaseController<User>{
         return service.info(user);
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/collect")
     @ResponseBody
     public JsonVo collect(@RequestBody CollectAndFillReqVo collectAndFillReqVo, @LoginUser UserDto userDto) {
@@ -130,7 +127,7 @@ public class UserController extends BaseController<User>{
         return service.collect(collectAndFillReqVo);
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/fill")
     @ResponseBody
     public JsonVo fill(@RequestBody CollectAndFillReqVo collectAndFillReqVo, @LoginUser UserDto userDto) {
@@ -138,7 +135,7 @@ public class UserController extends BaseController<User>{
         return service.fill(collectAndFillReqVo);
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/vip")
     @ResponseBody
     public JsonVo vip(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
@@ -149,7 +146,7 @@ public class UserController extends BaseController<User>{
         return service.vip(user);
     }
 
-    @MemberLoginToken
+    @ResultLoginToken
     @PostMapping("/friend")
     @ResponseBody
     public ListJsonVo<FriendVo> friend(@LoginResult ResultDto resultDto) {

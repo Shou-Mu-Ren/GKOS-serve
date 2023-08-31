@@ -127,6 +127,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public JsonVo collect(CollectAndFillReqVo collectAndFillReqVo) {
         if(collectAndFillReqVo.getState()==0){
             redisTemplate.opsForSet().add("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId());
+            System.out.println(111);
+            System.out.println(redisTemplate.opsForSet().isMember("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId()));
         }else{
             redisTemplate.opsForSet().remove("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId());
         }

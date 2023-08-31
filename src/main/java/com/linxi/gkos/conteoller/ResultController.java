@@ -1,22 +1,17 @@
 package com.linxi.gkos.conteoller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linxi.gkos.common.annotation.LoginResult;
 import com.linxi.gkos.common.annotation.LoginUser;
-import com.linxi.gkos.common.annotation.MemberLoginToken;
+import com.linxi.gkos.common.annotation.UserLoginToken;
 import com.linxi.gkos.common.annotation.PassToken;
-import com.linxi.gkos.common.exception.CommonException;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.MD5Util;
-import com.linxi.gkos.pojo.dto.ResultDto;
-import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.Result;
 import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
 import com.linxi.gkos.pojo.vo.json.DataJsonVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
-import com.linxi.gkos.pojo.vo.json.ListJsonVo;
 import com.linxi.gkos.pojo.vo.req.LoginReqVo;
 import com.linxi.gkos.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +79,7 @@ public class ResultController extends BaseController<Result>{
 
     }
 
-    @MemberLoginToken
+    @UserLoginToken
     @PostMapping("/friend")
     @ResponseBody
     public DataJsonVo<FriendVo> friend(@LoginUser UserDto userDto) {

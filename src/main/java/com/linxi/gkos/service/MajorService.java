@@ -8,8 +8,8 @@ import com.linxi.gkos.pojo.vo.req.MajorReqVo;
 import java.util.List;
 
 public interface MajorService extends IService<Major> {
-    List<UniversityDto> heat();
-    List<UniversityDto> list(MajorReqVo majorReqVo);
+    List<UniversityDto> heat(String phone);
+    List<UniversityDto> list(MajorReqVo majorReqVo, String phone);
     List<UniversityDto> collectList(String phone);
     List<UniversityDto> fillList(String phone);
 }
