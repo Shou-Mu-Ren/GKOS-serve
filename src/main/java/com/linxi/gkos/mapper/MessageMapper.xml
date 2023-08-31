@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxi.gkos.mapper.MessageMapper" >
+    <resultMap id="MessageDto" type="com.linxi.gkos.pojo.dto.MessageDto">
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="toId" column="to_id" jdbcType="INTEGER" />
+        <result property="fromId" column="from_id" jdbcType="INTEGER" />
+        <result property="content" column="content" jdbcType="VARCHAR" />
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <insert id="insertMessage" parameterType="com.linxi.gkos.pojo.po.Message">
+        INSERT INTO message (to_id,from_id,content,create_time)
+            VALUES (#{toId,jdbcType=INTEGER},#{fromId,jdbcType=INTEGER},
+                    #{content,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="findMessageByToAndFrom" resultMap="MessageDto" parameterType="com.linxi.gkos.pojo.po.Message">
+        SELECT * FROM message
+            WHERE (to_id=#{toId} AND from_id=#{fromId,jdbcType=INTEGER})
+            OR (from_id=#{toId} AND to_id=#{fromId,jdbcType=INTEGER})
+    </select>
+
+</mapper>

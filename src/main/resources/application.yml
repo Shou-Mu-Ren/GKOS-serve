@@ -7,6 +7,9 @@ spring:
       max-request-size: 2000MB
   jmx:
     default-domain: GKOS-serve
+  mvc:
+    servlet:
+      load-on-startup: 1
 #  mvc:
 #    format:
 #      date: yyyy-MM-dd HH:mm:ss

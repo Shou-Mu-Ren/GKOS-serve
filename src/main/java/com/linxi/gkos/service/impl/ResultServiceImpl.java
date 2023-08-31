@@ -5,16 +5,18 @@ import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.SMSUtil;
 import com.linxi.gkos.mapper.ResultMapper;
 import com.linxi.gkos.pojo.dto.ResultDto;
-import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.Result;
+import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
+import com.linxi.gkos.pojo.vo.req.LoginReqVo;
 import com.linxi.gkos.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +37,7 @@ public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> impleme
         //生成六位数验证码
         int code = new Random().nextInt(899999) + 100000;
         SMSUtil.sendMessage(phone,code);
+//        System.out.println(code);
         redisTemplate.opsForValue().set(phone+"_code_result", ""+code, 5, TimeUnit.MINUTES);
         return JsonVos.ok(MESSAGE_SEND_OK);
     }
@@ -42,6 +45,9 @@ public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> impleme
     @Override
     public LoginVo loginByCode(String phone, String code) {
         String makeCode = (String) redisTemplate.opsForValue().get(phone+"_code_result");
+        if(makeCode == null){
+            return JsonVos.raise(CODE_NOT_VALID);
+        }
         if (!makeCode.equals(code)){
             return JsonVos.raise(CODE_ERROR);
         }
@@ -66,5 +72,33 @@ public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> impleme
             return JsonVos.raise(WRONG_PASSWORD);
         }
         return new LoginVo(resultDto);
+    }
+
+    @Override
+    public JsonVo sendForget(String phone) {
+        //生成六位数验证码
+        int code = new Random().nextInt(899999) + 100000;
+        SMSUtil.sendMessage(phone,code);
+//        System.out.println(code);
+        redisTemplate.opsForValue().set(phone+"_forget_result", ""+code, 5, TimeUnit.MINUTES);
+        return JsonVos.ok(MESSAGE_SEND_OK);
+    }
+
+    @Override
+    public JsonVo forget(LoginReqVo loginReqVo) {
+        String makeCode = (String) redisTemplate.opsForValue().get(loginReqVo.getPhone()+"_forget_result");
+        if(makeCode == null){
+            return JsonVos.raise(CODE_NOT_VALID);
+        }
+        if (!loginReqVo.getCode().equals(makeCode)){
+            return JsonVos.raise(CODE_ERROR);
+        }
+        mapper.updateResultPassword(loginReqVo);
+        return JsonVos.ok(REQUEST_OK);
+    }
+
+    @Override
+    public FriendVo friend(Integer id) {
+        return new FriendVo(mapper.findResultById(id));
     }
 }

@@ -8,8 +8,8 @@ import java.util.Date;
 @Data
 public class Message {
     Integer id;
-    Integer toId;
-    Integer fromId;
+    String toId;
+    String fromId;
     String content;
     Date createTime;
 }

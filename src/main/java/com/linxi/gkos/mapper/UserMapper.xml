@@ -17,6 +17,10 @@
         <result property="year" column="year" jdbcType="VARCHAR" />
     </resultMap>
 
+    <select id="findUserById" resultMap="UserDto" parameterType="java.lang.Integer">
+        SELECT * FROM user WHERE id=#{id,jdbcType=INTEGER}
+    </select>
+
     <select id="findUserByPhone" resultMap="UserDto" parameterType="java.lang.String">
         SELECT * FROM user WHERE phone=#{phone,jdbcType=VARCHAR}
     </select>
@@ -26,4 +30,42 @@
         VALUES (#{phone,jdbcType=VARCHAR},0)
     </insert>
 
+    <update id="updateUserPassword" parameterType="com.linxi.gkos.pojo.vo.req.LoginReqVo">
+        UPDATE user
+        SET password=#{password,jdbcType=VARCHAR}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateUserByAnalyse" parameterType="com.linxi.gkos.pojo.po.User">
+        UPDATE user
+        SET year=#{year,jdbcType=VARCHAR}, grand=#{grand,jdbcType=INTEGER},
+            rank=#{rank,jdbcType=INTEGER}, subject=#{subject,jdbcType=VARCHAR}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateUserByInfo" parameterType="com.linxi.gkos.pojo.po.User">
+        UPDATE user
+        SET year=#{year,jdbcType=VARCHAR}, subject=#{subject,jdbcType=VARCHAR},
+            place=#{place,jdbcType=VARCHAR}, school=#{school,jdbcType=VARCHAR},
+            state=#{state,jdbcType=VARCHAR}, password=#{password,jdbcType=VARCHAR}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateUserVip" parameterType="com.linxi.gkos.pojo.po.User">
+        UPDATE user
+        SET vip=#{vip,jdbcType=INTEGER}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <select id="findResultId" resultType="java.lang.Integer">
+        SELECT id FROM result
+        ORDER BY id DESC
+        LIMIT 1
+    </select>
+
+    <update id="updateUserResultId" parameterType="com.linxi.gkos.pojo.po.User">
+        UPDATE user
+        SET result_id=#{resultId,jdbcType=INTEGER}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
 </mapper>

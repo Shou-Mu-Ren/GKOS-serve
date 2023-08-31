@@ -8,13 +8,22 @@
         <result property="password" column="password" jdbcType="VARCHAR" />
     </resultMap>
 
+    <select id="findResultById" resultMap="ResultDto" parameterType="java.lang.Integer">
+        SELECT * FROM result WHERE id=#{id,jdbcType=INTEGER}
+    </select>
+
     <select id="findResultByPhone" resultMap="ResultDto" parameterType="java.lang.String">
-        SELECT * FROM user WHERE phone=#{phone,jdbcType=VARCHAR}
+        SELECT * FROM result WHERE phone=#{phone,jdbcType=VARCHAR}
     </select>
 
     <insert id="insertResult" parameterType="java.lang.String">
-        INSERT INTO user (phone)
+        INSERT INTO result (phone)
         VALUES (#{phone,jdbcType=VARCHAR})
     </insert>
 
+    <update id="updateResultPassword" parameterType="com.linxi.gkos.pojo.vo.req.LoginReqVo">
+        UPDATE result
+        SET password=#{password,jdbcType=VARCHAR}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
 </mapper>

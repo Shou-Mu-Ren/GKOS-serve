@@ -21,6 +21,7 @@ public enum CodeMsg {
     MESSAGE_SEND_OK(200, "短信发送成功"),
     MESSAGE_SEND_ERROR(200, "短信发送失败"),
     CODE_ERROR(200, "验证码错误"),
+    CODE_NOT_VALID(200, "验证码失效"),
     EXISTS_USERNAME(200, "手机号已存在"),
     WRONG_DOUBLE_PASSWORD(200, "两次密码不同"),
     WRONG_LOGIN_POSITION(200, "登录位置错误");

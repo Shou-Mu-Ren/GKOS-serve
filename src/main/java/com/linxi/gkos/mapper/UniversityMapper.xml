@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxi.gkos.mapper.UniversityMapper" >
+    <resultMap id="UniversityDto" type="com.linxi.gkos.pojo.dto.UniversityDto">
+        <id property="code" column="code" jdbcType="VARCHAR" />
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="cityId" column="city_id" jdbcType="INTEGER" />
+        <result property="type" column="type" jdbcType="VARCHAR" />
+        <result property="nature" column="nature" jdbcType="VARCHAR" />
+        <result property="f11" column="f11" jdbcType="INTEGER" />
+        <result property="f211" column="f211" jdbcType="INTEGER" />
+        <result property="f985" column="f985" jdbcType="INTEGER" />
+        <result property="level" column="level" jdbcType="VARCHAR" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
+        <result property="cityName" column="cityName" jdbcType="VARCHAR" />
+        <result property="provinceId" column="provinceId" jdbcType="INTEGER" />
+        <result property="provinceName" column="provinceName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="UniversityDtoAndAdmitDto" type="com.linxi.gkos.pojo.dto.UniversityDto">
+        <id property="code" column="code" jdbcType="VARCHAR" />
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="cityId" column="city_id" jdbcType="INTEGER" />
+        <result property="type" column="type" jdbcType="VARCHAR" />
+        <result property="nature" column="nature" jdbcType="VARCHAR" />
+        <result property="f11" column="f11" jdbcType="INTEGER" />
+        <result property="f211" column="f211" jdbcType="INTEGER" />
+        <result property="f985" column="f985" jdbcType="INTEGER" />
+        <result property="level" column="level" jdbcType="VARCHAR" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
+        <result property="cityName" column="cityName" jdbcType="VARCHAR" />
+        <result property="provinceId" column="provinceId" jdbcType="INTEGER" />
+        <result property="provinceName" column="provinceName" jdbcType="VARCHAR" />
+        <collection property="majors" ofType="com.linxi.gkos.pojo.dto.MajorDto">
+            <id property="id" column="majorId" jdbcType="INTEGER" />
+            <result property="code" column="majorCode" jdbcType="VARCHAR" />
+            <result property="name" column="majorName" jdbcType="VARCHAR" />
+            <result property="level" column="majorLevel" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
+    <resultMap id="UniversityDtoAndAdmitDtoAndAdmitDto" type="com.linxi.gkos.pojo.dto.UniversityDto">
+        <id property="code" column="code" jdbcType="VARCHAR" />
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="cityId" column="city_id" jdbcType="INTEGER" />
+        <result property="type" column="type" jdbcType="VARCHAR" />
+        <result property="nature" column="nature" jdbcType="VARCHAR" />
+        <result property="f11" column="f11" jdbcType="INTEGER" />
+        <result property="f211" column="f211" jdbcType="INTEGER" />
+        <result property="f985" column="f985" jdbcType="INTEGER" />
+        <result property="level" column="level" jdbcType="VARCHAR" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
+        <result property="cityName" column="cityName" jdbcType="VARCHAR" />
+        <result property="provinceId" column="provinceId" jdbcType="INTEGER" />
+        <result property="provinceName" column="provinceName" jdbcType="VARCHAR" />
+        <collection property="majors" ofType="com.linxi.gkos.pojo.dto.MajorDto">
+            <id property="id" column="majorId" jdbcType="INTEGER" />
+            <result property="code" column="majorCode" jdbcType="VARCHAR" />
+            <result property="name" column="majorName" jdbcType="VARCHAR" />
+            <result property="level" column="majorLevel" jdbcType="VARCHAR" />
+            <collection property="admits" ofType="com.linxi.gkos.pojo.dto.AdmitDto">
+                <id property="id" column="admitId" jdbcType="INTEGER" />
+                <result property="grand" column="grand" jdbcType="INTEGER" />
+                <result property="rank" column="rank" jdbcType="INTEGER" />
+                <result property="subject" column="subject" jdbcType="VARCHAR" />
+                <result property="plan" column="plan" jdbcType="INTEGER" />
+                <result property="year" column="year" jdbcType="VARCHAR" />
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findFlashUniversity" resultMap="UniversityDtoAndAdmitDtoAndAdmitDto">
+        SELECT
+            u.code code,
+            u.name name,
+            u.city_id,
+            u. type,
+            u.nature,
+            u.f11,
+            u.f211,
+            u.f985,
+            u.level,
+            u.img,
+            c.name cityName,
+            p.id provinceId,
+            p.name provinceName,
+            m.id majorId,
+            m.code majorCode,
+            m.name majorName,
+            m.level majorLevel,
+            a.id admitId,
+            a.grand,
+            a.rank,
+            a.subject,
+            a.plan,
+            a.year
+        FROM university u
+                 LEFT JOIN city c ON u.city_id = c.id
+                 LEFT JOIN province p ON c.province_id = p.id
+                 LEFT JOIN major m ON u.code = m.university_code
+                 LEFT JOIN admit a ON m.id = a.major_id
+        WHERE m.id = 1
+    </select>
+
+    <select id="findHeatCode" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT u.code
+        FROM university u
+                 LEFT JOIN city c ON u.city_id = c.id
+                 LEFT JOIN province p ON c.province_id = p.id
+                 LEFT JOIN major m ON u.code = m.university_code
+                 LEFT JOIN admit a ON m.id = a.major_id
+        GROUP BY u.code, u.level HAVING u.level=#{level,jdbcType=VARCHAR}
+        ORDER BY SUM(a.plan) DESC
+    </select>
+
+    <select id="findHeatUniversityByCode" resultMap="UniversityDto">
+        SELECT
+            u.code code,
+            u.name name,
+            u.city_id,
+            u. type,
+            u.nature,
+            u.f11,
+            u.f211,
+            u.f985,
+            u.level,
+            u.img,
+            c.name cityName,
+            p.id provinceId,
+            p.name provinceName
+        FROM university u
+                 LEFT JOIN city c ON u.city_id = c.id
+                 LEFT JOIN province p ON c.province_id = p.id
+        WHERE u.code = #{code,jdbcType=VARCHAR}
+    </select>
+
+    <select id="list" resultMap="UniversityDto" parameterType="com.linxi.gkos.pojo.vo.req.UniversityReqVo">
+        SELECT
+            u.code code,
+            u.name name,
+            u.city_id,
+            u. type,
+            u.nature,
+            u.f11,
+            u.f211,
+            u.f985,
+            u.level,
+            u.img,
+            c.name cityName,
+            p.id provinceId,
+            p.name provinceName
+        FROM university u
+                 LEFT JOIN city c ON u.city_id = c.id
+                 LEFT JOIN province p ON c.province_id = p.id
+                 LEFT JOIN major m ON u.code = m.university_code
+        WHERE
+        <if test="level != null">
+            u.level = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="level == null">
+            u.code IS NOT NULL
+        </if>
+        <if test="type != null">
+            AND u.type = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            AND u.name LIKE concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="provinceName != null">
+            AND p.name = #{provinceName,jdbcType=VARCHAR}
+        </if>
+        <if test="cityName != null">
+            AND c.name = #{cityName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

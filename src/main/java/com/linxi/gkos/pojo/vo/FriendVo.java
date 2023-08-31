@@ -5,9 +5,8 @@ import com.linxi.gkos.pojo.dto.ResultDto;
 import com.linxi.gkos.pojo.dto.UserDto;
 import lombok.Data;
 
-
 @Data
-public class LoginVo {
+public class FriendVo {
     private Integer id;
     private String name;
     private String phone;
@@ -21,15 +20,14 @@ public class LoginVo {
     private Integer vip;
     private Integer resultId;
     private String year;
-    private String token;
-    public LoginVo(){}
-    public LoginVo(ResultDto resultDto){
+
+    public FriendVo(){}
+    public FriendVo(ResultDto resultDto){
         id = resultDto.getId();
         name = resultDto.getName();
         phone = resultDto.getPhone();
-        this.token = JwtUtil.getToken(resultDto.getPhone(),resultDto.getPassword());
     }
-    public LoginVo(UserDto userDto){
+    public FriendVo(UserDto userDto){
         id = userDto.getId();
         name = userDto.getName();
         phone = userDto.getPhone();
@@ -42,6 +40,5 @@ public class LoginVo {
         vip = userDto.getVip();
         resultId = userDto.getResultId();
         year = userDto.getYear();
-        this.token = JwtUtil.getToken(userDto.getPhone(),userDto.getPassword());
     }
 }
