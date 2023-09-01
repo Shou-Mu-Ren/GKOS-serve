@@ -4,14 +4,14 @@ import lombok.Data;
 
 @Data
 public class University {
-    String code;
-    String name;
-    Integer cityId;
-    String type;
-    String nature;
-    Integer f11;
-    Integer f211;
-    Integer f985;
-    String level;
-    String img;
+    private String code;
+    private String name;
+    private Integer cityId;
+    private String type;
+    private String nature;
+    private Integer f11;
+    private Integer f211;
+    private Integer f985;
+    private String level;
+    private String img;
 }

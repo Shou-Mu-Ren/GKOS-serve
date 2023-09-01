@@ -4,18 +4,18 @@ import lombok.Data;
 
 @Data
 public class User {
-    Integer id;
-    String name;
-    String phone;
-    String password;
-    String place;
-    String school;
-    String subject;
-    Integer grand;
-    Integer rank;
-    String state;
+    private Integer id;
+    private String name;
+    private String phone;
+    private String password;
+    private String place;
+    private String school;
+    private String subject;
+    private Integer grand;
+    private Integer rank;
+    private String state;
     //0不是 1是
-    Integer vip;
-    Integer resultId;
-    String year;
+    private Integer vip;
+    private Integer resultId;
+    private String year;
 }

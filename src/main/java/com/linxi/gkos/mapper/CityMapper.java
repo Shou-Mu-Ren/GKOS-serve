@@ -13,5 +13,6 @@ import java.util.List;
 public interface CityMapper extends BaseMapper<City> {
     List<Integer> findHeatId();
     CityDto findHeatCityById(Integer id);
+    String findImgById(Integer id);
     List<CityDto> list(CityReqVo cityReqVo);
 }

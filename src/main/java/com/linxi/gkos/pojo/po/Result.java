@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Result {
-    Integer id;
-    String name;
-    String phone;
-    String password;
+    private Integer id;
+    private String name;
+    private String phone;
+    private String password;
 }

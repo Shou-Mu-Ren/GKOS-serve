@@ -5,20 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57238ca3-7283-49a3-90fb-3c7372c0f994" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/ResultLoginToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/MemberLoginToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/annotation/UserLoginToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/interceptor/AuthenticationInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/interceptor/AuthenticationInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/CityVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/InfoVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MajorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MajorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ProvinceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ProvinceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ResultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UniversityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UniversityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UniversityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UniversityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/MajorDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/MajorDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/MajorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/MajorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/MajorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/MajorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Admit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Admit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Major.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Major.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Province.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/University.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/University.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UniversityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UniversityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
@@ -35,8 +42,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,7 +84,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ToolWindow运行.ShowToolbar&quot;: &quot;false&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Users/skn/Idea/item/GKOS-serve/src/main/java/com/linxi/gkos/common/util&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Users/skn/Idea/JavaEE/2/likeadmin_java&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -167,7 +174,9 @@
       <workItem from="1693376344981" duration="1494000" />
       <workItem from="1693379722348" duration="5659000" />
       <workItem from="1693403782741" duration="3679000" />
-      <workItem from="1693440967846" duration="9990000" />
+      <workItem from="1693440967846" duration="10711000" />
+      <workItem from="1693471852603" duration="7362000" />
+      <workItem from="1693533124955" duration="1970000" />
     </task>
     <servers />
   </component>

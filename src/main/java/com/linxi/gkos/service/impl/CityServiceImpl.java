@@ -6,6 +6,7 @@ import com.linxi.gkos.mapper.UserMapper;
 import com.linxi.gkos.pojo.dto.CityDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.po.City;
+import com.linxi.gkos.pojo.vo.CityVo;
 import com.linxi.gkos.pojo.vo.req.CityReqVo;
 import com.linxi.gkos.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,23 @@ public class CityServiceImpl extends ServiceImpl<CityMapper, City> implements Ci
     private CityMapper mapper;
 
     @Override
-    public List<CityDto> heat() {
+    public List<CityVo> heat() {
         List<Integer> ids = mapper.findHeatId();
-        List<CityDto> cityDtos = new ArrayList<>();
+        List<CityVo> cityVos = new ArrayList<>();
         for(int i = 0; i < 8; i++ ){
-            cityDtos.add(mapper.findHeatCityById(ids.get(i)));
+            cityVos.add(new CityVo(mapper.findHeatCityById(ids.get(i)),
+                    mapper.findImgById(ids.get(i))));
         }
-        return cityDtos;
+        return cityVos;
     }
 
     @Override
-    public List<CityDto> list(CityReqVo cityReqVo) {
-        return mapper.list(cityReqVo);
+    public List<CityVo> list(CityReqVo cityReqVo) {
+        List<CityDto> cityDtos = mapper.list(cityReqVo);
+        List<CityVo> cityVos = new ArrayList<>();
+        for (CityDto cityDto : cityDtos){
+            cityVos.add(new CityVo(cityDto,mapper.findImgById(cityDto.getId())));
+        }
+        return cityVos;
     }
 }

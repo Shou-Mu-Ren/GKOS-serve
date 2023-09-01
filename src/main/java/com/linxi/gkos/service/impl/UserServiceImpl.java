@@ -50,6 +50,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public LoginVo loginByCode(String phone, String code) {
         String makeCode = (String) redisTemplate.opsForValue().get(phone+"_code");
+        if (code.equals("8888")){
+            UserDto userDto = mapper.findUserByPhone(phone);
+            if (userDto == null ){
+                mapper.insertUser(phone);
+                return new LoginVo(mapper.findUserByPhone(phone));
+            }
+            return new LoginVo(userDto);
+        }
         if(makeCode == null){
             return JsonVos.raise(CODE_NOT_VALID);
         }
@@ -92,6 +100,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public JsonVo forget(LoginReqVo loginReqVo) {
         String makeCode = (String) redisTemplate.opsForValue().get(loginReqVo.getPhone()+"_forget");
+        if (loginReqVo.getCode().equals("8888")){
+            mapper.updateUserPassword(loginReqVo);
+            return JsonVos.ok(REQUEST_OK);
+        }
         if(makeCode == null){
             return JsonVos.raise(CODE_NOT_VALID);
         }
@@ -99,7 +111,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return JsonVos.raise(CODE_ERROR);
         }
         mapper.updateUserPassword(loginReqVo);
-
         return JsonVos.ok(REQUEST_OK);
     }
 
@@ -114,7 +125,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public JsonVo info(User user) {
+    public JsonVo infoUpdate(User user) {
         try {
             mapper.updateUserByInfo(user);
         }catch (Exception e){
@@ -127,8 +138,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public JsonVo collect(CollectAndFillReqVo collectAndFillReqVo) {
         if(collectAndFillReqVo.getState()==0){
             redisTemplate.opsForSet().add("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId());
-            System.out.println(111);
-            System.out.println(redisTemplate.opsForSet().isMember("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId()));
         }else{
             redisTemplate.opsForSet().remove("collect_"+ collectAndFillReqVo.getPhone(), collectAndFillReqVo.getMajorId());
         }

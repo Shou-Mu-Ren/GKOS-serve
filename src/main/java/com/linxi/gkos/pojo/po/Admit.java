@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Admit {
-    Integer id;
-    Integer majorId;
-    Integer grand;
-    Integer rank;
-    String subject;
-    Integer plan;
-    String year;
+    private Integer id;
+    private Integer majorId;
+    private Integer grand;
+    private Integer rank;
+    private String subject;
+    private Integer plan;
+    private String year;
 }

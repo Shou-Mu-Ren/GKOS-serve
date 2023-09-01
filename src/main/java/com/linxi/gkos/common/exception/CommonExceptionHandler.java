@@ -22,7 +22,7 @@ import java.util.List;
 public class CommonExceptionHandler {
 
     @ExceptionHandler
-    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.SERVICE_UNAVAILABLE)
     public JsonVo handleThrowable(Throwable t) {
         if (t instanceof CommonException) {
             CommonException ce = (CommonException) t;

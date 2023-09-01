@@ -15,6 +15,7 @@
                  LEFT JOIN province p ON c.province_id = p.id
                  LEFT JOIN major m ON u.code = m.university_code
                  LEFT JOIN admit a ON m.id = a.major_id
+        WHERE p.id!=21
         GROUP BY c.id
         ORDER BY SUM(a.plan) DESC
     </select>
@@ -28,6 +29,10 @@
         FROM city c
                  LEFT JOIN province p ON c.province_id = p.id
         WHERE c.id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findImgById" resultType="java.lang.String">
+        SELECT img FROM university WHERE city_id = #{id,jdbcType=INTEGER} LIMIT 1
     </select>
 
     <select id="list" resultMap="CityDto" parameterType="com.linxi.gkos.pojo.vo.req.CityReqVo">

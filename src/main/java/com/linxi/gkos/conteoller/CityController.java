@@ -5,6 +5,7 @@ import com.linxi.gkos.common.annotation.UserLoginToken;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.pojo.dto.CityDto;
 import com.linxi.gkos.pojo.po.City;
+import com.linxi.gkos.pojo.vo.CityVo;
 import com.linxi.gkos.pojo.vo.json.ListJsonVo;
 import com.linxi.gkos.pojo.vo.req.CityReqVo;
 import com.linxi.gkos.service.CityService;
@@ -26,14 +27,14 @@ public class CityController extends BaseController<City>{
     @UserLoginToken
     @PostMapping("/heat")
     @ResponseBody
-    public ListJsonVo<CityDto> heat() {
+    public ListJsonVo<CityVo> heat() {
         return JsonVos.ok(service.heat());
     }
 
     @UserLoginToken
     @PostMapping("/list")
     @ResponseBody
-    public ListJsonVo<CityDto> list(@RequestBody CityReqVo cityReqVo) {
+    public ListJsonVo<CityVo> list(@RequestBody CityReqVo cityReqVo) {
         return JsonVos.ok(service.list(cityReqVo));
     }
 }

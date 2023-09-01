@@ -1,14 +1,14 @@
 package com.linxi.gkos.conteoller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linxi.gkos.common.annotation.LoginUser;
-import com.linxi.gkos.common.annotation.UserLoginToken;
-import com.linxi.gkos.common.annotation.PassToken;
+import com.linxi.gkos.common.annotation.*;
 import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.MD5Util;
+import com.linxi.gkos.pojo.dto.ResultDto;
 import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.Result;
 import com.linxi.gkos.pojo.vo.FriendVo;
+import com.linxi.gkos.pojo.vo.InfoVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
 import com.linxi.gkos.pojo.vo.json.DataJsonVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
@@ -77,6 +77,14 @@ public class ResultController extends BaseController<Result>{
         }
         return service.forget(loginReqVo);
 
+    }
+
+    @ResultLoginToken
+    @GetMapping("/info")
+    @ResponseBody
+    public DataJsonVo<InfoVo> info(@LoginResult ResultDto resultDto) {
+
+        return JsonVos.ok(new InfoVo(resultDto));
     }
 
     @UserLoginToken

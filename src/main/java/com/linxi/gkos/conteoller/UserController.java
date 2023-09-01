@@ -9,6 +9,7 @@ import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.User;
 import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
+import com.linxi.gkos.pojo.vo.InfoVo;
 import com.linxi.gkos.pojo.vo.json.DataJsonVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
 import com.linxi.gkos.pojo.vo.json.ListJsonVo;
@@ -98,9 +99,17 @@ public class UserController extends BaseController<User>{
     }
 
     @UserLoginToken
-    @PostMapping("/info")
+    @GetMapping("/info")
     @ResponseBody
-    public JsonVo info(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
+    public DataJsonVo<InfoVo> info(@LoginUser UserDto userDto) {
+
+        return JsonVos.ok(new InfoVo(userDto));
+    }
+
+    @UserLoginToken
+    @PostMapping("/infoUpdate")
+    @ResponseBody
+    public JsonVo infoUpdate(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
         if (!userReqVo.getPassword().equals(userReqVo.getMakePassword())){
             return JsonVos.error(WRONG_DOUBLE_PASSWORD);
         }
@@ -116,7 +125,7 @@ public class UserController extends BaseController<User>{
         } catch (Exception e) {
             return JsonVos.raise("密码加密失败");
         }
-        return service.info(user);
+        return service.infoUpdate(user);
     }
 
     @UserLoginToken

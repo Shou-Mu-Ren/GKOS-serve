@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -50,6 +47,12 @@ public class WebConfig implements WebMvcConfigurer {
         InterceptorRegistration register = interceptorRegistration.addPathPatterns("/**");
         //上一步拦截所有然后得到的也是一个InterceptorRegistration，调用excludePathPatterns方法指定可以放行的路径
 //        register.excludePathPatterns("");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/avatar/**")//前端url访问的路径，若有访问前缀，在访问时添加即可，这里不需添加。
+                .addResourceLocations("file:/usr/local/java/img/");//映射的服务器存放图片目录。
     }
 
     @Bean//AuthenticationInterceptor自定义的认证拦截器，自动配置并注入spring管理

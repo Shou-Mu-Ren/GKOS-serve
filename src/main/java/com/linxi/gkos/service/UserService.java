@@ -18,7 +18,7 @@ public interface UserService extends IService<User> {
     JsonVo sendForget(String phone);
     JsonVo forget(LoginReqVo loginReqVo);
     JsonVo analyse(User user);
-    JsonVo info(User user);
+    JsonVo infoUpdate(User user);
     JsonVo collect(CollectAndFillReqVo collectAndFillReqVo);
     JsonVo fill(CollectAndFillReqVo collectAndFillReqVo);
     JsonVo vip(User user);

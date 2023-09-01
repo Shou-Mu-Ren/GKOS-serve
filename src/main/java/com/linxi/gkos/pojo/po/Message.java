@@ -7,9 +7,9 @@ import java.util.Date;
 
 @Data
 public class Message {
-    Integer id;
-    String toId;
-    String fromId;
-    String content;
-    Date createTime;
+    private Integer id;
+    private String toId;
+    private String fromId;
+    private String content;
+    private Date createTime;
 }
