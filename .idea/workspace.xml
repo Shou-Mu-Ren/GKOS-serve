@@ -5,29 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57238ca3-7283-49a3-90fb-3c7372c0f994" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/CityVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/InfoVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/cfg/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/common/exception/CommonExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/CityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ResultController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/ImgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/ArticleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/ArticleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/ImgMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/ImgMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/ArticleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/ImgDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/dto/MajorUniversityDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Img.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/ArticleReqVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/ImgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/ImgServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MajorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/MajorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/conteoller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/CityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Admit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Admit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Major.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Major.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Province.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/University.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/University.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/po/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/result/CodeMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/CityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/CityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/MajorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/MajorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/MajorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/MajorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UniversityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UniversityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/MajorReqVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/MajorReqVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/UniversityReqVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/pojo/vo/req/UniversityReqVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/MajorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/MajorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/MajorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/MajorServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UniversityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UniversityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linxi/gkos/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -176,7 +180,10 @@
       <workItem from="1693403782741" duration="3679000" />
       <workItem from="1693440967846" duration="10711000" />
       <workItem from="1693471852603" duration="7362000" />
-      <workItem from="1693533124955" duration="1970000" />
+      <workItem from="1693533124955" duration="2467000" />
+      <workItem from="1693553099267" duration="6875000" />
+      <workItem from="1693579881753" duration="677000" />
+      <workItem from="1693616653175" duration="5777000" />
     </task>
     <servers />
   </component>

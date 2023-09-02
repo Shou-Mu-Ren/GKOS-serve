@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.linxi.gkos.mapper.MajorMapper;
 import com.linxi.gkos.mapper.UserMapper;
 import com.linxi.gkos.pojo.dto.MajorDto;
+import com.linxi.gkos.pojo.dto.MajorUniversityDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.po.Major;
 import com.linxi.gkos.pojo.vo.req.MajorReqVo;
@@ -44,6 +45,9 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
 
     @Override
     public List<UniversityDto> list(MajorReqVo majorReqVo, String phone) {
+        if (majorReqVo.getPageSize() != null){
+            majorReqVo.setPageSize((majorReqVo.getPageSize()-1) * majorReqVo.getPageNum());
+        }
         List<UniversityDto> universityDtos = mapper.list(majorReqVo);
         for(UniversityDto universityDto : universityDtos){
             for (MajorDto majorDto: universityDto.getMajors()){
@@ -82,5 +86,22 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
             }
         }
         return universityDtos;
+    }
+
+    @Override
+    public List<MajorUniversityDto> find(MajorReqVo majorReqVo, String phone) {
+        if (majorReqVo.getPageSize() != null){
+            majorReqVo.setPageSize((majorReqVo.getPageSize()-1) * majorReqVo.getPageNum());
+        }try {
+            List<MajorUniversityDto> majorUniversityDtos = mapper.find(majorReqVo);
+            for (MajorUniversityDto majorUniversityDto : majorUniversityDtos) {
+                majorUniversityDto.setIs(redisTemplate, phone);
+            }
+            return majorUniversityDtos;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        }
+        return null;
     }
 }

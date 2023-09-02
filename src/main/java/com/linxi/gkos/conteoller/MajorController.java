@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.linxi.gkos.common.annotation.LoginUser;
 import com.linxi.gkos.common.annotation.UserLoginToken;
 import com.linxi.gkos.common.util.JsonVos;
+import com.linxi.gkos.pojo.dto.MajorUniversityDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.Major;
@@ -51,6 +52,13 @@ public class MajorController extends BaseController<Major>{
     @ResponseBody
     public ListJsonVo<UniversityDto> fillList(@LoginUser UserDto userDto) {
         return JsonVos.ok(service.fillList(userDto.getPhone()));
+    }
+
+    @UserLoginToken
+    @PostMapping("/find")
+    @ResponseBody
+    public ListJsonVo<MajorUniversityDto> find(@RequestBody MajorReqVo majorReqVo, @LoginUser UserDto userDto) {
+        return JsonVos.ok(service.find(majorReqVo, userDto.getPhone()));
     }
 
 }

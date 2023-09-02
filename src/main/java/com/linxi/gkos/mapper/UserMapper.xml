@@ -47,7 +47,7 @@
         UPDATE user
         SET year=#{year,jdbcType=VARCHAR}, subject=#{subject,jdbcType=VARCHAR},
             place=#{place,jdbcType=VARCHAR}, school=#{school,jdbcType=VARCHAR},
-            state=#{state,jdbcType=VARCHAR}, password=#{password,jdbcType=VARCHAR}
+            state=#{state,jdbcType=VARCHAR}
         WHERE phone=#{phone,jdbcType=VARCHAR}
     </update>
 

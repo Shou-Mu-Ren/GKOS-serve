@@ -69,6 +69,33 @@
         </collection>
     </resultMap>
 
+    <resultMap id="MajorUniversityDto" type="com.linxi.gkos.pojo.dto.MajorUniversityDto">
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="code" column="code" jdbcType="VARCHAR" />
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="level" column="level" jdbcType="VARCHAR" />
+        <result property="universityCode" column="universityCode" jdbcType="VARCHAR" />
+        <result property="universityName" column="universityName" jdbcType="VARCHAR" />
+        <result property="cityId" column="cityId" jdbcType="INTEGER" />
+        <result property="cityName" column="cityName" jdbcType="VARCHAR" />
+        <result property="provinceId" column="provinceId" jdbcType="INTEGER" />
+        <result property="provinceName" column="provinceName" jdbcType="VARCHAR" />
+        <result property="type" column="type" jdbcType="VARCHAR" />
+        <result property="nature" column="nature" jdbcType="VARCHAR" />
+        <result property="f11" column="f11" jdbcType="INTEGER" />
+        <result property="f211" column="f211" jdbcType="INTEGER" />
+        <result property="universityLevel" column="universityLevel" jdbcType="VARCHAR" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
+        <collection property="admits" ofType="com.linxi.gkos.pojo.dto.AdmitDto">
+            <id property="id" column="admitId" jdbcType="INTEGER" />
+            <result property="grand" column="grand" jdbcType="INTEGER" />
+            <result property="rank" column="rank" jdbcType="INTEGER" />
+            <result property="subject" column="subject" jdbcType="VARCHAR" />
+            <result property="plan" column="plan" jdbcType="INTEGER" />
+            <result property="year" column="year" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
     <select id="findHeatId" resultType="java.lang.Integer">
         SELECT m.id
         FROM university u
@@ -145,6 +172,54 @@
         </if>
         <if test="name != null">
             AND m.name LIKE concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="pageSize != null">
+            LIMIT #{pageSize,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="find" resultMap="MajorUniversityDto" parameterType="com.linxi.gkos.pojo.vo.req.MajorReqVo">
+        SELECT
+        m.id,
+        m.code,
+        m.name,
+        m.level,
+        u.code universityCode,
+        u.name universityName,
+        c.id cityId,
+        c.name cityName,
+        p.id provinceId,
+        p.name provinceName,
+        u. type,
+        u.nature,
+        u.f11,
+        u.f211,
+        u.f985,
+        u.level universityLevel,
+        u.img,
+        a.id admitId,
+        a.grand,
+        a.rank,
+        a.subject,
+        a.plan,
+        a.year
+        FROM major m
+        LEFT JOIN university u ON u.code = m.university_code
+        LEFT JOIN city c ON u.city_id = c.id
+        LEFT JOIN province p ON c.province_id = p.id
+        LEFT JOIN admit a ON m.id = a.major_id
+        WHERE
+        <if test="level != null">
+            m.level = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="level == null">
+            m.level IS NULL
+        </if>
+        <if test="name != null">
+            AND m.name LIKE concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="pageSize != null">
+            LIMIT #{pageSize,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
         </if>
     </select>
 </mapper>

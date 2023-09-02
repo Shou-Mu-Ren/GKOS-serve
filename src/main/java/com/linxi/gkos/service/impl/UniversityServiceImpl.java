@@ -36,6 +36,9 @@ public class UniversityServiceImpl extends ServiceImpl<UniversityMapper, Univers
 
     @Override
     public List<UniversityDto> list(UniversityReqVo universityReqVo) {
+        if (universityReqVo.getPageSize() != null){
+            universityReqVo.setPageSize((universityReqVo.getPageSize()-1) * universityReqVo.getPageNum());
+        }
         return mapper.list(universityReqVo);
     }
 }

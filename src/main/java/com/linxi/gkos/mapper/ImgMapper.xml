@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxi.gkos.mapper.ImgMapper" >
+    <resultMap id="ImgDto" type="com.linxi.gkos.pojo.dto.ImgDto">
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
+        <result property="state" column="state" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="list" resultMap="ImgDto">
+        SELECT * FROM img WHERE state=1
+    </select>
+
+</mapper>

@@ -9,4 +9,6 @@ public class UniversityReqVo {
     private String cityName;
     private String type;
     private String level;
+    private Integer pageSize;
+    private Integer pageNum;
 }

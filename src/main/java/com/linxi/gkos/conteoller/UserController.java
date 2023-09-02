@@ -102,7 +102,6 @@ public class UserController extends BaseController<User>{
     @GetMapping("/info")
     @ResponseBody
     public DataJsonVo<InfoVo> info(@LoginUser UserDto userDto) {
-
         return JsonVos.ok(new InfoVo(userDto));
     }
 
@@ -110,9 +109,6 @@ public class UserController extends BaseController<User>{
     @PostMapping("/infoUpdate")
     @ResponseBody
     public JsonVo infoUpdate(@RequestBody UserReqVo userReqVo, @LoginUser UserDto userDto) {
-        if (!userReqVo.getPassword().equals(userReqVo.getMakePassword())){
-            return JsonVos.error(WRONG_DOUBLE_PASSWORD);
-        }
         User user = new User();
         user.setPhone(userDto.getPhone());
         user.setPlace(userReqVo.getPlace());
@@ -120,11 +116,6 @@ public class UserController extends BaseController<User>{
         user.setYear(userReqVo.getYear());
         user.setSubject(userReqVo.getSubject());
         user.setState(userReqVo.getState());
-        try {
-            user.setPassword(MD5Util.encryMD5(userReqVo.getPassword().getBytes()));
-        } catch (Exception e) {
-            return JsonVos.raise("密码加密失败");
-        }
         return service.infoUpdate(user);
     }
 
@@ -159,7 +150,6 @@ public class UserController extends BaseController<User>{
     @PostMapping("/friend")
     @ResponseBody
     public ListJsonVo<FriendVo> friend(@LoginResult ResultDto resultDto) {
-
         return JsonVos.ok(service.friend(resultDto.getId()));
     }
 }

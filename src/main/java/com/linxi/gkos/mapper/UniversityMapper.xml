@@ -171,6 +171,9 @@
         <if test="cityName != null">
             AND c.name = #{cityName,jdbcType=VARCHAR}
         </if>
+        <if test="pageSize != null">
+            LIMIT #{pageSize,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+        </if>
     </select>
 
 </mapper>
