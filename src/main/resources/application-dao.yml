@@ -4,7 +4,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: Wlzx.1358
+    password: *********8
     url: jdbc:mysql://localhost:3306/gkos?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     druid:
       initial-size: 5
@@ -16,6 +16,7 @@ spring:
     port: 6379
     # 操作0号数据库，默认有16个数据库
     database: 0
+    password: **********
     jedis:
       pool:
         max-active: 8 # 最大连接数
