@@ -133,6 +133,39 @@
         WHERE m.id = #{id,jdbcType=INTEGER}
     </select>
 
+    <select id="findMajorById" resultMap="MajorUniversityDto">
+        SELECT
+            m.id,
+            m.code,
+            m.name,
+            m.level,
+            u.code universityCode,
+            u.name universityName,
+            c.id cityId,
+            c.name cityName,
+            p.id provinceId,
+            p.name provinceName,
+            u. type,
+            u.nature,
+            u.f11,
+            u.f211,
+            u.f985,
+            u.level universityLevel,
+            u.img,
+            a.id admitId,
+            a.grand,
+            a.rank,
+            a.subject,
+            a.plan,
+            a.year
+        FROM major m
+                 LEFT JOIN university u ON u.code = m.university_code
+                 LEFT JOIN city c ON u.city_id = c.id
+                 LEFT JOIN province p ON c.province_id = p.id
+                 LEFT JOIN admit a ON m.id = a.major_id
+        WHERE m.id = #{id,jdbcType=INTEGER}
+    </select>
+
     <select id="list" resultMap="UniversityDtoAndAdmitDtoAndAdmitDto" parameterType="com.linxi.gkos.pojo.vo.req.MajorReqVo">
         SELECT
         u.code code,
@@ -222,4 +255,24 @@
             LIMIT #{pageSize,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
         </if>
     </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="com.linxi.gkos.pojo.vo.req.MajorReqVo">
+        SELECT COUNT(m.id)
+        FROM major m
+        LEFT JOIN university u ON u.code = m.university_code
+        LEFT JOIN city c ON u.city_id = c.id
+        LEFT JOIN province p ON c.province_id = p.id
+        LEFT JOIN admit a ON m.id = a.major_id
+        WHERE
+        <if test="level != null">
+            m.level = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="level == null">
+            m.level IS NULL
+        </if>
+        <if test="name != null">
+            AND m.name LIKE concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+    </select>
+
 </mapper>

@@ -9,6 +9,7 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
         <result property="lookCount" column="look_count" jdbcType="INTEGER" />
         <result property="favouriteCount" column="favourite_count" jdbcType="INTEGER" />
+        <result property="img" column="img" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="list" resultMap="ArticleDto" parameterType="com.linxi.gkos.pojo.vo.req.ArticleReqVo">

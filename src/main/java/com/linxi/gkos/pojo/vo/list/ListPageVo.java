@@ -9,10 +9,12 @@ import java.util.List;
 public class ListPageVo<T> {
     //总数
     private long count;
-
     //总页数
     private long pages;
-
     //具体数据
     private List<T> data;
+
+    public ListPageVo(List<T> data){
+        this.data = data;
+    }
 }

@@ -6,11 +6,16 @@
         <result property="name" column="name" jdbcType="VARCHAR" />
         <result property="phone" column="phone" jdbcType="VARCHAR" />
         <result property="password" column="password" jdbcType="VARCHAR" />
+        <result property="age" column="age" jdbcType="INTEGER" />
+        <result property="sex" column="sex" jdbcType="INTEGER" />
+        <result property="place" column="place" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="findResultById" resultMap="ResultDto" parameterType="java.lang.Integer">
         SELECT * FROM result WHERE id=#{id,jdbcType=INTEGER}
     </select>
+
+
 
     <select id="findResultByPhone" resultMap="ResultDto" parameterType="java.lang.String">
         SELECT * FROM result WHERE phone=#{phone,jdbcType=VARCHAR}
@@ -26,4 +31,23 @@
         SET password=#{password,jdbcType=VARCHAR}
         WHERE phone=#{phone,jdbcType=VARCHAR}
     </update>
+
+    <update id="updateByAdmin" parameterType="com.linxi.gkos.pojo.po.Result">
+        UPDATE result
+        SET name=#{name,jdbcType=VARCHAR},age=#{age,jdbcType=INTEGER},
+            place=#{place,jdbcType=VARCHAR}, sex=#{sex,jdbcType=INTEGER}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insertByAdmin" parameterType="com.linxi.gkos.pojo.po.Result">
+        INSERT INTO result(name,age,place,sex,phone)
+        VALUES( #{name,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},
+                #{place,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER},
+                #{phone,jdbcType=VARCHAR} )
+    </insert>
+
+
+    <insert id="deleteByAdmin" parameterType="com.linxi.gkos.pojo.po.Result">
+        DELETE FROM result WHERE phone=#{phone,jdbcType=VARCHAR}
+    </insert>
 </mapper>

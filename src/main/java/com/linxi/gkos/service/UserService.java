@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.linxi.gkos.pojo.po.User;
 import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
+import com.linxi.gkos.pojo.vo.VipVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
 import com.linxi.gkos.pojo.vo.req.CollectAndFillReqVo;
 import com.linxi.gkos.pojo.vo.req.LoginReqVo;
@@ -23,4 +24,8 @@ public interface UserService extends IService<User> {
     JsonVo fill(CollectAndFillReqVo collectAndFillReqVo);
     JsonVo vip(User user);
     List<FriendVo> friend(Integer id);
+    List<VipVo> vipCount();
+    JsonVo updateByAdmin(User user);
+    JsonVo insertByAdmin(User user);
+    JsonVo deleteByAdmin(User user);
 }

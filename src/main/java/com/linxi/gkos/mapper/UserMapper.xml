@@ -68,4 +68,30 @@
         SET result_id=#{resultId,jdbcType=INTEGER}
         WHERE phone=#{phone,jdbcType=VARCHAR}
     </update>
+
+    <select id="vipCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM user WHERE vip=1
+    </select>
+
+    <update id="updateByAdmin" parameterType="com.linxi.gkos.pojo.po.User">
+        UPDATE user
+        SET subject=#{subject,jdbcType=VARCHAR},year=#{year,jdbcType=VARCHAR},
+            place=#{place,jdbcType=VARCHAR}, school=#{school,jdbcType=VARCHAR},
+            result_id=#{resultId,jdbcType=INTEGER}, grand=#{grand,jdbcType=INTEGER}
+        WHERE phone=#{phone,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insertByAdmin" parameterType="com.linxi.gkos.pojo.po.User">
+        INSERT INTO user(subject,year,place,school,result_id,grand,phone)
+        VALUES( #{subject,jdbcType=VARCHAR},#{year,jdbcType=VARCHAR},
+            #{place,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR},
+            #{resultId,jdbcType=INTEGER}, #{grand,jdbcType=INTEGER},
+            #{phone,jdbcType=VARCHAR} )
+    </insert>
+
+
+    <insert id="deleteByAdmin" parameterType="com.linxi.gkos.pojo.po.User">
+        DELETE FROM user WHERE phone=#{phone,jdbcType=VARCHAR}
+    </insert>
+
 </mapper>

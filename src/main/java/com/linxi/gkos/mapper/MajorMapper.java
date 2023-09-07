@@ -13,6 +13,8 @@ import java.util.List;
 public interface MajorMapper extends BaseMapper<Major> {
     List<Integer> findHeatId();
     UniversityDto findHeatMajorById(Integer id);
+    MajorUniversityDto findMajorById(Integer id);
     List<UniversityDto> list(MajorReqVo majorReqVo);
     List<MajorUniversityDto> find(MajorReqVo majorReqVo);
+    Integer count(MajorReqVo majorReqVo);
 }

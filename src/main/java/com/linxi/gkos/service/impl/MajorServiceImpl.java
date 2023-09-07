@@ -7,6 +7,7 @@ import com.linxi.gkos.pojo.dto.MajorDto;
 import com.linxi.gkos.pojo.dto.MajorUniversityDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.po.Major;
+import com.linxi.gkos.pojo.vo.list.ListPageVo;
 import com.linxi.gkos.pojo.vo.req.MajorReqVo;
 import com.linxi.gkos.service.MajorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
     }
 
     @Override
-    public List<UniversityDto> list(MajorReqVo majorReqVo, String phone) {
+    public ListPageVo<UniversityDto> list(MajorReqVo majorReqVo, String phone) {
         if (majorReqVo.getPageSize() != null){
             majorReqVo.setPageSize((majorReqVo.getPageSize()-1) * majorReqVo.getPageNum());
         }
@@ -54,54 +55,48 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
                 majorDto.setIs(redisTemplate, phone);
             }
         }
-        return universityDtos;
+        ListPageVo<UniversityDto> universityDtoListPageVo = new ListPageVo<>(universityDtos);
+        universityDtoListPageVo.setCount(mapper.count(majorReqVo));
+        return universityDtoListPageVo;
     }
 
     @Override
-    public List<UniversityDto> collectList(String phone) {
+    public List<MajorUniversityDto> collectList(String phone) {
         Set ids = redisTemplate.opsForSet().members("collect_"+phone);
-        List<UniversityDto> universityDtos = new ArrayList<>();
+        List<MajorUniversityDto> majorUniversityDtos = new ArrayList<>();
         for (Object o : ids){
-            universityDtos.add(mapper.findHeatMajorById(Integer.parseInt(o.toString())));
+            majorUniversityDtos.add(mapper.findMajorById(Integer.parseInt(o.toString())));
         }
-        for(UniversityDto universityDto : universityDtos){
-            for (MajorDto majorDto: universityDto.getMajors()){
-                majorDto.setIs(redisTemplate, phone);
-            }
+        for(MajorUniversityDto majorUniversityDto: majorUniversityDtos){
+            majorUniversityDto.setIs(redisTemplate,phone);
         }
-
-        return universityDtos;
+        return majorUniversityDtos;
     }
 
     @Override
-    public List<UniversityDto> fillList(String phone) {
+    public List<MajorUniversityDto> fillList(String phone) {
         Set ids = redisTemplate.opsForSet().members("fill_"+phone);
-        List<UniversityDto> universityDtos = new ArrayList<>();
+        List<MajorUniversityDto> majorUniversityDtos = new ArrayList<>();
         for (Object o : ids){
-            universityDtos.add(mapper.findHeatMajorById(Integer.parseInt(o.toString())));
+            majorUniversityDtos.add(mapper.findMajorById(Integer.parseInt(o.toString())));
         }
-        for(UniversityDto universityDto : universityDtos){
-            for (MajorDto majorDto: universityDto.getMajors()){
-                majorDto.setIs(redisTemplate, phone);
-            }
+        for(MajorUniversityDto majorUniversityDto: majorUniversityDtos){
+            majorUniversityDto.setIs(redisTemplate,phone);
         }
-        return universityDtos;
+        return majorUniversityDtos;
     }
 
     @Override
-    public List<MajorUniversityDto> find(MajorReqVo majorReqVo, String phone) {
+    public ListPageVo<MajorUniversityDto> find(MajorReqVo majorReqVo, String phone) {
         if (majorReqVo.getPageSize() != null){
             majorReqVo.setPageSize((majorReqVo.getPageSize()-1) * majorReqVo.getPageNum());
-        }try {
-            List<MajorUniversityDto> majorUniversityDtos = mapper.find(majorReqVo);
-            for (MajorUniversityDto majorUniversityDto : majorUniversityDtos) {
-                majorUniversityDto.setIs(redisTemplate, phone);
-            }
-            return majorUniversityDtos;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println(e.getCause());
         }
-        return null;
+        List<MajorUniversityDto> majorUniversityDtos = mapper.find(majorReqVo);
+        for (MajorUniversityDto majorUniversityDto : majorUniversityDtos) {
+            majorUniversityDto.setIs(redisTemplate, phone);
+        }
+        ListPageVo<MajorUniversityDto> majorUniversityDtoListPageVo = new ListPageVo<>(majorUniversityDtos);
+        majorUniversityDtoListPageVo.setCount(mapper.count(majorReqVo));
+        return majorUniversityDtoListPageVo;
     }
 }

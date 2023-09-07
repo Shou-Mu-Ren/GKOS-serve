@@ -1,9 +1,10 @@
-package com.linxi.gkos.pojo.po;
+package com.linxi.gkos.pojo.vo.req;
 
 import lombok.Data;
 
+
 @Data
-public class Result {
+public class ResultReqVo {
     private Integer id;
     private String name;
     private String phone;

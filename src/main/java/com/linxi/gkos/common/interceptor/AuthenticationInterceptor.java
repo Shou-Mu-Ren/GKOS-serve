@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.linxi.gkos.common.annotation.AdminLoginToken;
 import com.linxi.gkos.common.annotation.UserLoginToken;
 import com.linxi.gkos.common.annotation.PassToken;
 import com.linxi.gkos.common.annotation.ResultLoginToken;
@@ -135,6 +136,48 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                 }
             }
         }
+
+
+        //检查映射方法是否有@ResultLoginToken注解，有则进行token认证对比
+        if (method.isAnnotationPresent(AdminLoginToken.class)) {
+            AdminLoginToken adminLoginToken = method.getAnnotation(AdminLoginToken.class);
+            if (adminLoginToken.required()) {
+                //执行认证
+                if (token == null) {
+                    response.setContentType("application/json;charset=UTF-8");
+                    //token为空或无token
+                    response.getWriter().println(EMPTY_ACCESS_TOKEN);
+                    return false;
+                }
+                System.out.println(token);
+                token = token.replace("Bearer ","");
+                //获取token中的phone
+                String phone = "";
+                try {
+                    phone  = JWT.decode(token).getAudience().get(0);
+                } catch (JWTDecodeException e) {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.getWriter().println(TOKEN_FORMAT_ERROR);
+                    return false;
+                }
+                UserDto userDto = new UserDto();
+                userDto.setPhone("admin");
+                userDto.setPassword("admin");
+                if(userDto != null){
+                    //验证token    verifier:校验机    Algorithm：算法
+                    JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userDto.getPassword())).build();
+                    try {
+                        jwtVerifier.verify(token);
+                    } catch (JWTVerificationException e) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        response.getWriter().println(TOKEN_WRONG_PASSWORD);
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 

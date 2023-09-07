@@ -101,4 +101,22 @@ public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> impleme
     public FriendVo friend(Integer id) {
         return new FriendVo(mapper.findResultById(id));
     }
+
+    @Override
+    public JsonVo updateByAdmin(Result result) {
+        mapper.updateByAdmin(result);
+        return JsonVos.ok(REQUEST_OK);
+    }
+
+    @Override
+    public JsonVo insertByAdmin(Result result) {
+        mapper.insertByAdmin(result);
+        return JsonVos.ok(REQUEST_OK);
+    }
+
+    @Override
+    public JsonVo deleteByAdmin(Result result) {
+        mapper.deleteByAdmin(result);
+        return JsonVos.ok(REQUEST_OK);
+    }
 }

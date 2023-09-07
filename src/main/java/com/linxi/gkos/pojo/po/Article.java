@@ -13,4 +13,5 @@ public class Article {
     private Date createTime;
     private Integer lookCount;
     private Integer favouriteCount;
+    private String img;
 }

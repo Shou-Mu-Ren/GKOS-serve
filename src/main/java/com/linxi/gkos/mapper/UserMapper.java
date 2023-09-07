@@ -21,4 +21,8 @@ public interface UserMapper extends BaseMapper<User> {
     void updateUserVip(User user);
     Integer findResultId();
     void updateUserResultId(User user);
+    Integer vipCount();
+    void updateByAdmin(User user);
+    void insertByAdmin(User user);
+    void deleteByAdmin(User user);
 }

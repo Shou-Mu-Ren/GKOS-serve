@@ -9,6 +9,7 @@ import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.Major;
 import com.linxi.gkos.pojo.vo.json.ListJsonVo;
+import com.linxi.gkos.pojo.vo.json.ListPageJsonVo;
 import com.linxi.gkos.pojo.vo.req.MajorReqVo;
 import com.linxi.gkos.service.MajorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,28 +37,28 @@ public class MajorController extends BaseController<Major>{
     @UserLoginToken
     @PostMapping("/list")
     @ResponseBody
-    public ListJsonVo<UniversityDto> list(@RequestBody MajorReqVo majorReqVo, @LoginUser UserDto userDto) {
+    public ListPageJsonVo<UniversityDto> list(@RequestBody MajorReqVo majorReqVo, @LoginUser UserDto userDto) {
         return JsonVos.ok(service.list(majorReqVo, userDto.getPhone()));
     }
 
     @UserLoginToken
     @PostMapping("/collectList")
     @ResponseBody
-    public ListJsonVo<UniversityDto> collectList(@LoginUser UserDto userDto) {
+    public ListJsonVo<MajorUniversityDto> collectList(@LoginUser UserDto userDto) {
         return JsonVos.ok(service.collectList(userDto.getPhone()));
     }
 
     @UserLoginToken
     @PostMapping("/fillList")
     @ResponseBody
-    public ListJsonVo<UniversityDto> fillList(@LoginUser UserDto userDto) {
+    public ListJsonVo<MajorUniversityDto> fillList(@LoginUser UserDto userDto) {
         return JsonVos.ok(service.fillList(userDto.getPhone()));
     }
 
     @UserLoginToken
     @PostMapping("/find")
     @ResponseBody
-    public ListJsonVo<MajorUniversityDto> find(@RequestBody MajorReqVo majorReqVo, @LoginUser UserDto userDto) {
+    public ListPageJsonVo<MajorUniversityDto> find(@RequestBody MajorReqVo majorReqVo, @LoginUser UserDto userDto) {
         return JsonVos.ok(service.find(majorReqVo, userDto.getPhone()));
     }
 

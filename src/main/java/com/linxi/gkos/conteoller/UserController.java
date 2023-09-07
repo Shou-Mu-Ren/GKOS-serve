@@ -6,20 +6,27 @@ import com.linxi.gkos.common.util.JsonVos;
 import com.linxi.gkos.common.util.MD5Util;
 import com.linxi.gkos.pojo.dto.ResultDto;
 import com.linxi.gkos.pojo.dto.UserDto;
+import com.linxi.gkos.pojo.po.Result;
 import com.linxi.gkos.pojo.po.User;
 import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
 import com.linxi.gkos.pojo.vo.InfoVo;
+import com.linxi.gkos.pojo.vo.VipVo;
 import com.linxi.gkos.pojo.vo.json.DataJsonVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
 import com.linxi.gkos.pojo.vo.json.ListJsonVo;
 import com.linxi.gkos.pojo.vo.req.CollectAndFillReqVo;
 import com.linxi.gkos.pojo.vo.req.LoginReqVo;
+import com.linxi.gkos.pojo.vo.req.UniversityReqVo;
 import com.linxi.gkos.pojo.vo.req.UserReqVo;
 import com.linxi.gkos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.linxi.gkos.pojo.result.CodeMsg.REQUEST_ERROR;
 import static com.linxi.gkos.pojo.result.CodeMsg.WRONG_DOUBLE_PASSWORD;
 
 @RestController
@@ -152,4 +159,77 @@ public class UserController extends BaseController<User>{
     public ListJsonVo<FriendVo> friend(@LoginResult ResultDto resultDto) {
         return JsonVos.ok(service.friend(resultDto.getId()));
     }
+
+    @PassToken
+    @GetMapping("/list")
+    @ResponseBody
+    public ListJsonVo<InfoVo> list() {
+        List<InfoVo> infoVos = new ArrayList<>();
+        for(User user : service.list()){
+            infoVos.add(new InfoVo(user));
+        }
+        return JsonVos.ok(infoVos);
+    }
+
+    @AdminLoginToken
+    @GetMapping("/vipCount")
+    @ResponseBody
+    public ListJsonVo<VipVo> vipCount() {
+        return JsonVos.ok(service.vipCount());
+    }
+
+    @AdminLoginToken
+    @PostMapping("/updateByAdmin")
+    @ResponseBody
+    public JsonVo updateByAdmin(@RequestBody UserReqVo userReqVo) {
+        User user = new User();
+        user.setPhone(userReqVo.getPhone());
+        user.setSchool(userReqVo.getSchool());
+        user.setResultId(userReqVo.getResultId());
+        user.setSubject(userReqVo.getSubject());
+        user.setGrand(userReqVo.getGrand());
+        user.setYear(userReqVo.getYear());
+        user.setPlace(userReqVo.getPlace());
+        return service.updateByAdmin(user);
+    }
+
+    @AdminLoginToken
+    @PostMapping("/insertByAdmin")
+    @ResponseBody
+    public JsonVo insertByAdmin(@RequestBody UserReqVo userReqVo) {
+        User user = new User();
+        user.setPhone(userReqVo.getPhone());
+        user.setSchool(userReqVo.getSchool());
+        user.setResultId(userReqVo.getResultId());
+        user.setSubject(userReqVo.getSubject());
+        user.setGrand(userReqVo.getGrand());
+        user.setYear(userReqVo.getYear());
+        user.setPlace(userReqVo.getPlace());
+        return service.insertByAdmin(user);
+    }
+
+    @AdminLoginToken
+    @PostMapping("/deleteByAdmin")
+    @ResponseBody
+    public JsonVo deleteByAdmin(@RequestBody UserReqVo userReqVo) {
+        User user = new User();
+        user.setPhone(userReqVo.getPhone());
+        return service.deleteByAdmin(user);
+    }
+
+
+    @PassToken
+    @PostMapping("/adminLogin")
+    @ResponseBody
+    public DataJsonVo<LoginVo> adminLogin(@RequestBody LoginReqVo loginReqVo) {
+        UserDto userDto = new UserDto();
+        userDto.setPhone("admin");
+        userDto.setPassword("admin");
+        if(loginReqVo.getPhone().equals(userDto.getPhone())
+                &&loginReqVo.getPassword().equals(userDto.getPassword())){
+            return JsonVos.ok(new LoginVo(userDto));
+        }
+        return JsonVos.raise(REQUEST_ERROR);
+    }
+
 }

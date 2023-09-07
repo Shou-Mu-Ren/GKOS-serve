@@ -31,7 +31,7 @@ public class JsonVos {
     }
 
     public static <T> ListPageJsonVo<T> ok(ListPageVo<T> resVo) {
-        ListPageJsonVo<T> r = new ListPageJsonVo<>(resVo.getData());
+        ListPageJsonVo<T> r = new ListPageJsonVo<>("success",resVo.getData());
         r.setCount(resVo.getCount());
         return r;
     }

@@ -1,6 +1,7 @@
 package com.linxi.gkos.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.linxi.gkos.pojo.dto.MajorUniversityDto;
 import com.linxi.gkos.pojo.dto.UniversityDto;
 import com.linxi.gkos.pojo.po.University;
 import com.linxi.gkos.pojo.po.User;
@@ -15,4 +16,7 @@ public interface UniversityMapper extends BaseMapper<University> {
     List<String> findHeatCode(String level);
     UniversityDto findHeatUniversityByCode(String code);
     List<UniversityDto> list(UniversityReqVo universityReqVo);
+    List<MajorUniversityDto> find(UniversityReqVo universityReqVo);
+    Integer count(UniversityReqVo universityReqVo);
+    List<String> type();
 }

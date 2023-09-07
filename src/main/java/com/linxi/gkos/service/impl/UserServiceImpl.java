@@ -9,6 +9,7 @@ import com.linxi.gkos.pojo.dto.UserDto;
 import com.linxi.gkos.pojo.po.User;
 import com.linxi.gkos.pojo.vo.FriendVo;
 import com.linxi.gkos.pojo.vo.LoginVo;
+import com.linxi.gkos.pojo.vo.VipVo;
 import com.linxi.gkos.pojo.vo.json.JsonVo;
 import com.linxi.gkos.pojo.vo.req.CollectAndFillReqVo;
 import com.linxi.gkos.pojo.vo.req.LoginReqVo;
@@ -177,5 +178,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             friendVos.add(new FriendVo(mapper.findUserById(Integer.parseInt(o.toString()))));
         }
         return friendVos;
+    }
+
+    @Override
+    public List<VipVo> vipCount() {
+        List<VipVo> vipVos = new ArrayList<>();
+        vipVos.add(new VipVo("永久卡",mapper.vipCount()));
+        return vipVos;
+    }
+
+    @Override
+    public JsonVo insertByAdmin(User user) {
+        mapper.insertByAdmin(user);
+        return JsonVos.ok(REQUEST_OK);
+    }
+
+    @Override
+    public JsonVo deleteByAdmin(User user) {
+        mapper.deleteByAdmin(user);
+        return JsonVos.ok(REQUEST_OK);
+    }
+
+    @Override
+    public JsonVo updateByAdmin(User user) {
+        mapper.updateByAdmin(user);
+        return JsonVos.ok(REQUEST_OK);
     }
 }
