@@ -10,8 +10,8 @@ import com.aliyuncs.profile.DefaultProfile;
 
 public class SMSUtil {
     // 阿里云账号AccessKey信息
-    private static final String ACCESS_KEY_ID = "LTAI5tDiyoLVSu3YU6mr9s7V";
-    private static final String ACCESS_KEY_SECRET = "V3XgkXc3v9OYmyt6hYxLzOOFVTXUsL";
+    private static final String ACCESS_KEY_ID = "************";
+    private static final String ACCESS_KEY_SECRET = "************";
     /**
      * 发送短信
      * @param phoneNumbers 收信人手机号
